@@ -1,7 +1,11 @@
+#import dependencies - Randy Dettmer - 2020/04/21
 from flask import Flask, render_template
 
+#import scrape_mars as a scraping tool
+import scrape_mars
+
 #import pymongo library
-frpm flask_pymongo import PyMongo
+from flask_pymongo import PyMongo
 
 #import scrape_mars
 import scrape_mars

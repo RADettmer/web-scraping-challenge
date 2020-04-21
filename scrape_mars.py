@@ -1,5 +1,4 @@
 #load dependencies - Randy Dettmer 2020/04/19
-
 from splinter import Browser
 from bs4 import BeautifulSoup
 
