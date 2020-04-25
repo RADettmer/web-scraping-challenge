@@ -1,10 +1,10 @@
 #load dependencies - Randy Dettmer 2020/04/19
 from splinter import Browser
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
 
 def init_browser():
-    #note
-    excutable_path = {"excutable_path": "url/locatl/bin/chromedriver"}
+    #set browser to Chrome
+    executable_path = {"excutable_path": "chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
 def scrape():
@@ -15,21 +15,15 @@ def scrape():
     browser.visit(url)
 
     html = browser.html
-    soup = BeautifulSoup(html, "html.parser") #change to xtml?? parcer?
-
-    listings[] = soup.find("", class="").get_text()
+    soup = bs(html, "html.parser") #change to xtml?? parcer?
+    #incomplete items below - need to be updated []? why?
+    listings[] = soup.find("div", class="?").get_text()
 
     return listings
 
 #end of file
 
 #necessary????
-
-#set browser to Chrome - will this fix my problems???
-def init_browser():
-    executable_path = {"excutable_path": "/usr/local/bin/chromedriver"}
-    return Browser("chrome", **executable_path, headless=False)
-
 
 def scrape_info():
     browser = init_browser()
@@ -39,7 +33,7 @@ def scrape_info():
     browser.visit(url)
 
     #delay if reading a lot of pages of a website to avoid being banned
-    time.sleep(1)    
+    #time.sleep(1)    
   
     #scrape page into soup
     html = browser.html
