@@ -1,6 +1,7 @@
 #load dependencies - Randy Dettmer 2020/04/19
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
+import time
 
 def init_browser():
     #set browser to Chrome
@@ -33,7 +34,7 @@ def scrape_info():
     browser.visit(url)
 
     #delay if reading a lot of pages of a website to avoid being banned
-    #time.sleep(1)    
+    time.sleep(2)    
   
     #scrape page into soup
     html = browser.html
@@ -41,4 +42,6 @@ def scrape_info():
     #get latest news title
     news_title = soup.find('a', target='_self')
     
-    
+#output data    
+if__name__="__main__":
+    print(scrape_all())
