@@ -6,10 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mars_Search<title>
-
 </head>
-<body>
 
+<body>
+    <div class="container">
+	
+		<div class="jumbotron text-center">
+			<h1>Mission to Mars</h1>
+			<p><a class="btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
+        </div><!--end of jumbotron-->
+<!--mars news-->		
+		<div class="row" id="mars news">
+            <div class="col-md-12">
+                <h3>Mars News</h3>
+                <h4>{{mars.news_title}}</h4>
+                    <p>{{mars.news_p}}</p>
+            </div>
+        </div>
+<!--mars image-->		
+		<div class="row" id="mars image">
+            <div class="col-md-12">
+                <h3>Mars Featured Image</h3>
+                <img src="{{mars.featured_image_url}}" alt="Mars Image"
+            </div>
+        </div>
+<!--mars weather-->		
+		<div class="row" id="mars weather">
+            <div class="col-md-6">
+                <h4>Mars Weather</h4>
+                <h4>work in progress</h4>
+            </div>
+            <div class="col-md-6">
+                <h4>Mars Facts</h4>
+                <p>{{mars.mars_facts}}</p>
+            </div>
+        </div>
+<!--mars facts-->
+        <div class="row" id="mars hemispheres">
+            <div class="col-md-12">
+                <h3><center>Mars Heispheres</center></h3>
+                {% for hemisphere in mars.hemisphere_image_url %}
+                <div class ="col-md-6">
+                    <div class="thumbnail">
+                        <img src="{{hemisphere.img_url}}">
+                            <h3>{{hemisphere.title}}</h3>
+                    </div><!--end of thumbnail-->
+                </div><!--end of class col-md-6-->
+                {% endfor %}
+            </div><!--end of class col-md-12-->
+        </div>        
+		
+		
+	</div><!--end of container-->
 
 <!-- These bootstrap links go just before the end of the body end-->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
