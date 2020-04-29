@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--Randy Dettmer 2020/04/27-->
+<html lang="us-en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mission to Mars</title>
+    <!-- Bring in our bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+		<div class="jumbotron text-center">
+			<h1>Mission to Mars</h1>
+			<p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
+        </div><!--end of jumbotron-->
+<!--mars news-->		
+		<div class="row" id="mars news">
+            <div class="col-md-12">
+                <h3>Mars News</h3>
+                <h4>{{mars.news_title}}</h4>
+                    <p>{{mars.news_p}}</p>
+            </div>
+        </div>
+<!--mars image-->		
+		<div class="row" id="mars image">
+            <div class="col-md-12">
+                <h3>Mars Featured Image</h3>
+                <img src="{{mars.featured_image_url}}" alt="Mars Image"
+            </div>
+        </div>
+<!--mars weather-->		
+		<div class="row" id="mars weather">
+            <div class="col-md-6">
+                <h4>Mars Weather</h4>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th colspan="4">Mars Weather</th>
+                        </tr>
+                        <tr>
+                            <th>Max Temp</th>
+                            <th>Avg Temp</th>
+                            <th>Min Temp</th>
+                            <th>Max Wind Speed</th>
+                            <th>Avg Wind Speed</th>
+                            <th>Min Wind Speed</th>
+                            <th>Wind Direction</th>
+                            <th>Max Pressure</th>
+                            <th>Avg Pressure</th>
+                            <th>Min Pressure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{mars.max_temp}}</td>
+                            <td>{{mars.avg_temp}}</td>
+                            <td>{{mars.min_temp}}</td>
+                            <td>{{mars.max_ws}}</td>
+                            <td>{{mars.avg_ws}}</td>
+                            <td>{{mars.min_ws}}</td>
+                            <td>{{mars.direction}}</td>
+                            <td>{{mars.max_p}}</td>
+                            <td>{{mars.avg_p}}</td>
+                            <td>{{mars.min_p}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>work in progress</h4>
+            </div>
+            <div class="col-md-6">
+<!--mars facts-->                
+                <h4>Mars Facts</h4>
+                <p>{{mars.mars_facts | safe}}</p><!--not sure what safe does here-->
+            </div>
+        </div>
+<!--mars hemispheres-->
+        <div class="row" id="mars hemispheres">
+            <div class="col-md-12">
+                <h3><center>Mars Heispheres</center></h3>
+                {% for hemisphere in mars.hemisphere_image_url %}
+                <div class ="col-md-6">
+                    <div class="thumbnail">
+                        <img src="{{hemisphere.img_url}}">
+                            <h3>{{hemisphere.title}}</h3>
+                    </div><!--end of thumbnail-->
+                </div><!--end of class col-md-6-->
+                {% endfor %}
+            </div><!--end of class col-md-12-->
+        </div>        
+	</div><!--end of container-->
+
+<!-- These bootstrap links go just before the end of the body end-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

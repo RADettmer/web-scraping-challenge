@@ -8,6 +8,9 @@ import pandas as pd
 executable_path = {"executable_path": "chromedriver"}
 browser = Browser("chrome", **executable_path, headless=False)
 
+
+#driver = webdriver.Chrome(executable_path=r"C:\Chrome\chromedriver.exe")
+
 #create scrape dictionary
 def scrape():
     data = {}
@@ -16,6 +19,7 @@ def scrape():
     data['news_title'] = text[0]
     data['news_p'] = text[1]
     data['featured_image_url'] = scrape_image()
+    ERROR:browser_switcher_service.cc(238)] XXX Init()
     data['max_temp'] = wdata[0]
     data['avg_temp'] = wdata[1]
     data['min_temp'] = wdata[2]
@@ -31,12 +35,11 @@ def scrape():
     return data
 
 def scrape_info():
-    
     #vist NASA mars web site
     url = "https://mars.nasa.gov/news/"
     browser.visit(url)
 
-    #delay if reading a lot of pages of a website to avoid being banned
+    #delay to make sure page loads
     time.sleep(2)    
   
     #scrape page into soup
@@ -54,8 +57,11 @@ def scrape_info():
 def scrape_image():
     # Visit JPL site for current Mars space image
     image_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
-
     browser.visit(image_url)
+
+    #delay to make sure page loads
+    time.sleep(1)  
+
     html = browser.html
     soup = bs(html, "lxml")
 
@@ -77,6 +83,10 @@ def scrape_weather():
     # Visit the Mars Weather from NASA - alternative site used to collect the weather information
     weather_url = "https://mars.nasa.gov/insight/weather/"
     browser.visit(weather_url)
+
+    #delay to make sure page loads
+    time.sleep(1)  
+
     html = browser.html
     soup = bs(html, "lxml")
     
@@ -104,6 +114,9 @@ def scrape_facts():
     facts_url = "https://space-facts.com/mars/"
     browser.visit(facts_url)
 
+    #delay to make sure page loads
+    time.sleep(1)  
+
     # Create pandas df with Mars facts - -
     # Index [2] returns the cleanest data
     df1 = pd.read_html("https://space-facts.com/mars/")[2]
@@ -116,6 +129,10 @@ def scrape_hemisphere():
     # Visit the Mars hemispheres scrape images from the astrogeology.usgs site
     hemispheres_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(hemispheres_url)
+
+    #delay to make sure page loads
+    time.sleep(1)  
+
     html = browser.html
     soup = bs(html, "lxml")
 
@@ -133,7 +150,7 @@ def scrape_hemisphere():
         key = result.find("a")["href"]
         #join link together
         link = "https://astrogeology.usgs.gov/" + key
-        #       read link
+        #read link
         browser.visit(link)
         html = browser.html
         soup = bs(html, "lxml")
@@ -148,4 +165,7 @@ def scrape_hemisphere():
 
 
 #close brwser after scraping
+#driver.close()
+time.sleep(1)
+#driver.quit()
 browser.quit()
