@@ -19,7 +19,6 @@ def scrape():
     data['news_title'] = text[0]
     data['news_p'] = text[1]
     data['featured_image_url'] = scrape_image()
-    ERROR:browser_switcher_service.cc(238)] XXX Init()
     data['max_temp'] = wdata[0]
     data['avg_temp'] = wdata[1]
     data['min_temp'] = wdata[2]
