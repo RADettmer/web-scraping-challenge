@@ -14,26 +14,26 @@
 <body>
     <div class="container">
 		<div class="jumbotron text-center">
-			<h1>Mission to Mars</h1>
+			<h1><bold>Mission to Mars</bold></h1>
 			<p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
         </div><!--end of jumbotron-->
 <!--mars news-->		
 		<div class="row" id="mars news">
             <div class="col-md-12">
-                <h3>Mars News</h3>
-                <h4>{{mars.news_title}}</h4>
+                <h2>Mars News</h2>
+                <h5>{{mars.news_title}}</h5>
                     <p>{{mars.news_p}}</p>
             </div>
         </div>
 <!--mars image-->		
 		<div class="row" id="mars image">
             <div class="col-md-12">
-                <h3>Mars Featured Image</h3>
+                <h2>Mars Featured Image</h2>
                 <img src="{{mars.featured_image_url}}" alt="Mars Image"
             </div>
         </div>
 <!--mars weather-->		
-		<div class="row" id="mars weather">
+		<div class="row" id="mars weather and facts">
             <div class="col-md-6">
                 <h4>Mars Weather</h4>
                 <table border="1">
@@ -80,12 +80,12 @@
 <!--mars hemispheres-->
         <div class="row" id="mars hemispheres">
             <div class="col-md-12">
-                <h3><center>Mars Heispheres</center></h3>
-                {% for hemisphere in mars.hemisphere_image_url %}
+                <h3><center>Mars Hemispheres</center></h3>
+                {% for hemisphere in mars.hemisphere_image %}
                 <div class ="col-md-6">
                     <div class="thumbnail">
-                        <img src="{{hemisphere.img_url}}">
-                            <h3>{{hemisphere.title}}</h3>
+                        <img src="{{hemisphere.image_url}}">
+                            <h4>{{hemisphere.title}}</h4>
                     </div><!--end of thumbnail-->
                 </div><!--end of class col-md-6-->
                 {% endfor %}

@@ -1,4 +1,4 @@
-#import dependencies - Randy Dettmer - 2020/04/21
+#import dependencies - Randy Dettmer - 2020/04/30
 from flask import Flask, render_template, redirect, send_from_directory
 from flask_pymongo import PyMongo
 import os
@@ -26,8 +26,8 @@ def home():
 def scrape():
     mars = mongo.db.mars
     #pull data from sites using scrape_mars.py
-    mars_data = scrape_mars.scrape()
-    mars.update({}, mars_data, upsert=True)
+    data = scrape_mars.scrape()
+    mars.update({}, data, upsert=True)
     #redirect back to home page
     return redirect("/", code=302)
 
