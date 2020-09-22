@@ -1,15 +1,15 @@
-#import dependencies - Randy Dettmer - 2020/04/30
+# Import dependencies - Randy Dettmer - 2020/04/30
 from flask import Flask, render_template, redirect, send_from_directory
 from flask_pymongo import PyMongo
 import os
 
-#import scrape_mars as a scraping tool
+# Import scrape_mars.py as a scraping tool
 import scrape_mars
 
-#create an instance of our Flask app
+# Create an instance of our Flask app
 app = Flask(__name__)
 
-#use flask_pymongo to set up mongo connection
+# Use Flask_Pymongo to set up a Mongo connection
 app.config["MONGO_URI"] = "mongodb://localhost:27017/app"
 mongo = PyMongo(app)
 
