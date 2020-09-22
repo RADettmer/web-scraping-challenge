@@ -104,6 +104,7 @@ def scrape():
     time.sleep(1)  
 
     html = browser.html
+    # I used lxml because it seemed I received more consistant responses over html.parser
     soup = bs(html, "lxml")
 
     # Create a dictionary to store data using the keys img_url and title
