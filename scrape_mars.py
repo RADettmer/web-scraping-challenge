@@ -135,5 +135,5 @@ def scrape():
     data['hemisphere_image'] = hemisphere_image_urls
     return data
 
-#close brwser after scraping
+#close browser after scraping - not needed
 #browser.quit()
