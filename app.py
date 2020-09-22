@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/app"
 mongo = PyMongo(app)
 
-#home route
+# Home Route
 @app.route("/")
 def home():
     #store mars data into list
@@ -21,7 +21,7 @@ def home():
     #return the template with list passed index
     return render_template('index.html', mars=mars)
 
-#route that will scrape
+# Route that will scrape
 @app.route("/scrape")
 def scrape():
     mars = mongo.db.mars
