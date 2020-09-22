@@ -25,13 +25,13 @@ def home():
 @app.route("/scrape")
 def scrape():
     mars = mongo.db.mars
-    #pull data from sites using scrape_mars.py
+    # Pull data from sites using scrape_mars.py
     data = scrape_mars.scrape()
     mars.update({}, data, upsert=True)
     #redirect back to home page
     return redirect("/", code=302)
 
-#added to correct and or prevent favicon error
+# Added code to correct and or prevent favicon error
 @app.route('/favicon.ico') 
 def favicon(): 
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
