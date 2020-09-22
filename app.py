@@ -16,9 +16,9 @@ mongo = PyMongo(app)
 # Home Route
 @app.route("/")
 def home():
-    #store mars data into list
+    # Store mars data into list
     mars = mongo.db.mars.find_one()
-    #return the template with list passed index
+    # Return the template with list passed index
     return render_template('index.html', mars=mars)
 
 # Route that will scrape
@@ -28,7 +28,7 @@ def scrape():
     # Pull data from sites using scrape_mars.py
     data = scrape_mars.scrape()
     mars.update({}, data, upsert=True)
-    #redirect back to home page
+    # Redirect back to home page
     return redirect("/", code=302)
 
 # Added code to correct and or prevent favicon error
@@ -36,6 +36,6 @@ def scrape():
 def favicon(): 
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-#end of file
+# End of file
 if __name__ == "__main__":
     app.run(debug=True)
