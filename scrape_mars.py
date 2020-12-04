@@ -1,19 +1,19 @@
-#load dependencies - Randy Dettmer 2020/04/30
+# load dependencies - Randy Dettmer 2020/04/30
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
 import time
 import pandas as pd
 from selenium import webdriver
 
-#set browser to Chrome
+# set browser to Chrome
 executable_path = {"executable_path": "chromedriver"}
 browser = Browser("chrome", **executable_path, headless=False)
 
-#create scrape dictionary
+# create scrape dictionary
 def scrape():
     data = {}
    
-#vist NASA mars web site
+# vist NASA mars web site
     news_url = "https://mars.nasa.gov/news/"
     browser.visit(news_url)
 
