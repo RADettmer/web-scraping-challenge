@@ -1,10 +1,10 @@
 ###Web Scraping Homework - Mission to Mars
 
 Step 1 - Scraping
-	This task used a Jupyter Notebook to perform scraping operations.
+	This task used a Jupyter Notebook to perform the initial scraping operations.
 
 Step 2 - MongoDB and Flask Application
-	This task used Flask Applications to create a static web page displaying Mars data.
+	This task used Flask Applications to create a static web page displaying Mars data that was scraped.
 
 Files:
 
